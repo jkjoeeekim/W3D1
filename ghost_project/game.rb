@@ -1,7 +1,4 @@
-# DICTIONARY = Hash.new(File.read('dictionary.txt').split("\n"))
-# DICTIONARY = eval(File.read('dictionary.txt'))
-# p DICTIONARY
-
+# Game class for ghost game
 class Game
   DICTIONARY = {}
   File.open('dictionary.txt') do |file|
@@ -18,10 +15,10 @@ class Game
     @fragment = fragment
   end
 
-  frag = "zon"
-  
-  
+  def word?(fragment)
+    dictionary.keys.any? { |word| word.start_with?(fragment) }
+  end
 end
 
-g = Game.new("hi", "frag")
-p g.dictionary["zoned"]
+g = Game.new('hi', 'frag')
+p g.word?('zona')
